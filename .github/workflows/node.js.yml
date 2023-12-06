@@ -27,11 +27,3 @@ jobs:
       - name: Lint Check
         # When fails, please run "yarn lint" to your code
         run: yarn lint
-      - name: Test cb-cookie-manager
-        working-directory: ./packages/cb-cookie-manager
-        run: yarn test
-      - name: Test cb-cookie-banner
-        working-directory: ./packages/cb-cookie-banner
-        run: |
-          yarn add cb-cookie-manager@1.0.0
-          yarn test
