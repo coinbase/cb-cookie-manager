@@ -1,8 +1,10 @@
 import {
   getDefaultTrackingPreference,
+  getDomainWithoutSubdomain,
   isOptOut,
   persistMobileAppPreferences,
   Region,
+  useCookie,
   useSavedTrackingPreference,
   useSavedTrackingPreferenceFromMobileApp,
   useSetTrackingPreference,
@@ -10,6 +12,7 @@ import {
 } from 'cb-cookie-manager';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
+import { EXPIRATION_DAYS } from '../constants';
 import defaultTheme from '../utils/defaultTheme';
 import BannerContent from './CookieBannerContent';
 import CookiePreferencesModal from './CookiePreferencesModal';
@@ -24,6 +27,12 @@ type Props = {
     | undefined;
 };
 
+const cookieOptions = {
+  expires: EXPIRATION_DAYS,
+  domain: getDomainWithoutSubdomain(),
+  path: '/',
+};
+
 export const useBanner = () => {
   const savedPreference = useSavedTrackingPreference();
   const mobileAppPreference = useSavedTrackingPreferenceFromMobileApp();
@@ -34,6 +43,7 @@ export const useBanner = () => {
   const optOutRegion = isOptOut(region);
   const defaultPreferences = getDefaultTrackingPreference(region, config);
   const setTrackingPreference = useSetTrackingPreference();
+  const [, setAdvertisingSharingAllowedCookie] = useCookie('ADVERTISING_SHARING_ALLOWED');
 
   const handleBannerDismiss = useCallback(() => {
     // Only set default tracking preferences on dismiss if we are in an opt out
@@ -65,6 +75,16 @@ export const useBanner = () => {
     if (shouldSaveMobileAppPreferences && mobileAppPreference) {
       // Set the is_mobile_app cookie.
       persistMobileAppPreferences();
+      // advertising sharing disabled, if `is_mobile_app` is set
+      const isEnabled = false;
+      const updatedAt = Date.now();
+      setAdvertisingSharingAllowedCookie(
+        {
+          value: isEnabled,
+          updatedAt,
+        },
+        cookieOptions
+      );
       // Set the cookie banner preferences.
       setTrackingPreference(mobileAppPreference);
     }
