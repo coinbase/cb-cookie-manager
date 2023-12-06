@@ -1,4 +1,4 @@
-import { TrackingCategory } from 'cb-cookie-manager';
+import { TrackingCategory } from '@coinbase/cookie-manager';
 import React, { memo } from 'react';
 import { useIntl } from 'react-intl';
 

@@ -6,7 +6,7 @@ import {
   useSetTrackingPreference,
   useTrackingManager,
   useTrackingPreference,
-} from 'cb-cookie-manager';
+} from '@coinbase/cookie-manager';
 import React, { memo, useCallback, useEffect, useReducer } from 'react';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';

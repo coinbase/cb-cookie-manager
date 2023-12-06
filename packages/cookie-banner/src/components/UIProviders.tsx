@@ -1,4 +1,4 @@
-import { useTrackingManager } from 'cb-cookie-manager';
+import { useTrackingManager } from '@coinbase/cookie-manager';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';

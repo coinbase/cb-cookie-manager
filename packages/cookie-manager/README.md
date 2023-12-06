@@ -22,7 +22,7 @@
 
 ## Introduction
 
-`cb-cookie-manager` helps manage the following first party client side cookie categories:
+`@coinbase/cookie-manager` helps manage the following first party client side cookie categories:
 
 - `Necessary Cookies`: Cookies that are necessary for the site to the function
 - `Performance Cookies`: Cookies that impact site performance and help mesaure performance
@@ -50,7 +50,7 @@ import {
   Region,
   TrackerType,
   TrackingCategory,
-} from 'cb-cookie-manager';
+} from '@coinbase/cookie-manager';
 
 export default {
   categories: [
@@ -138,11 +138,11 @@ In this example: `id_ac7a5c3da45e3612b44543a702e42b01` will also be allowed
 Install the package as follows:
 
 ```shell
-yarn add cb-cookie-manager
+yarn add @coinbase/cookie-manager
 
-npm install cb-cookie-manager
+npm install @coinbase/cookie-manager
 
-pnpm install cb-cookie-manager
+pnpm install @coinbase/cookie-manager
 ```
 
 ## Methods
@@ -170,7 +170,7 @@ The provider must wrap the entire application and only be instantiated once. On 
 Example usage:
 
 ```typescript
-import { Provider, Region, TrackingCategory, TrackingPreference } from 'cb-cookie-manager';
+import { Provider, Region, TrackingCategory, TrackingPreference } from '@coinbase/cookie-manager';
 
 <Provider
   onError={notifyError}
@@ -270,7 +270,7 @@ const SomeComponent = () => {
 This is a hook for programmatically determining if a tracker (e.g. cookie) has been consented to by the user.
 
 ```typescript
-import { useHasConsent } from 'cb-cookie-manager';
+import { useHasConsent } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
   const hasConsent = useHasConsent('cookie');
@@ -289,7 +289,7 @@ This hook is used to determine which category of cookies is required.
 Example Usage:
 
 ```typescript
-import { useRequiredCategories, TRACKER_CATEGORIES } from 'cb-cookie-manager';
+import { useRequiredCategories, TRACKER_CATEGORIES } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
   const requiredCategories = useRequiredCategories();
@@ -320,7 +320,7 @@ This hook is used to retrieve the saved cookie preference in cache
 Example Usage:
 
 ```typescript
-import { useSavedTrackingPreference } from 'cb-cookie-manager';
+import { useSavedTrackingPreference } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
   const preference = useSavedTrackingPreference();
@@ -340,7 +340,7 @@ This hook is used to set the saved cookie preference in cache
 Example Usage:
 
 ```typescript
-import { useSetTrackingPreference, Region, TrackingCategory } from 'cb-cookie-manager';
+import { useSetTrackingPreference, Region, TrackingCategory } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
     const setTrackingPreference = useSetTrackingPreference();
@@ -370,7 +370,7 @@ This hook returns the cached preference and if no preference is cached, it retur
 Example Usage:
 
 ```typescript
-import { useTrackingPreference } from 'cb-cookie-manager';
+import { useTrackingPreference } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
   const initialTrackingPreference = useTrackingPreference();
@@ -391,7 +391,7 @@ Example usage:
 
 ```typescript
 
-import { areCookiesEnabled } from 'cb-cookie-manager';
+import { areCookiesEnabled } from '@coinbase/cookie-manager';
 
 
 const SomeComponent = () => {
@@ -412,7 +412,7 @@ This hook is used to retrieve the default tracking preference for a given user b
 Example usage:
 
 ```typescript
-import { getDefaultTrackingPreference } from 'cb-cookie-manager';
+import { getDefaultTrackingPreference } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
   const preference = getDefaultTrackingPreference();
@@ -432,7 +432,7 @@ This hook is used to return `TrackingManagerDependencies` which includes all the
 Example usage:
 
 ```typescript
-import { isOptOut, useTrackingManager } from 'cb-cookie-manager';
+import { isOptOut, useTrackingManager } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
   const { region } = useTrackingManager();
@@ -460,7 +460,7 @@ It follows the following logic in order:
 Example usage:
 
 ```typescript
-import { isOptOut, useTrackingManager } from 'cb-cookie-manager';
+import { isOptOut, useTrackingManager } from '@coinbase/cookie-manager';
 
 const SomeComponent = () => {
   const { region } = useTrackingManager();

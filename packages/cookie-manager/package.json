@@ -1,5 +1,5 @@
 {
-  "name": "cb-cookie-manager",
+  "name": "@coinbase/cookie-manager",
   "version": "1.0.0",
   "description": "Coinbase Cookie Manager",
   "main": "dist/index.js",

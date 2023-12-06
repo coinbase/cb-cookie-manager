@@ -20,18 +20,18 @@ Install the package as follows:
 **Note: This package requires react and react-dom as peer dependencies**
 
 ```shell
-yarn add cb-cookie-manager cb-cookie-banner
+yarn add @coinbase/cookie-manager @coinbase/cookie-banner
 
-npm install cb-cookie-manager cb-cookie-banner
+npm install @coinbase/cookie-manager @coinbase/cookie-banner
 
-pnpm install cb-cookie-manager cb-cookie-banner
+pnpm install @coinbase/cookie-manager @coinbase/cookie-banner
 ```
 
 ## UI
 
 ### Cookie Banner
 
-This banner must be a child of `cb-cookie-manager` provider. It takes an optional theme prop (see [theme section](#theme)). Otherwise, it will default to the Coinbase theme.
+This banner must be a child of `@coinbase/cookie-manager` provider. It takes an optional theme prop (see [theme section](#theme)). Otherwise, it will default to the Coinbase theme.
 
 It takes the following props:
 
@@ -41,7 +41,7 @@ It takes the following props:
 Example usage:
 
 ```typescript
-import { CookieBanner } from 'cb-cookie-banner';
+import { CookieBanner } from '@coinbase/cookie-banner';
 
 const SomeComponent = () => {
     return (
@@ -57,7 +57,7 @@ const SomeComponent = () => {
 
 Modal to allow user's to choose their cookie preferences.
 
-This modal must be a child of `cb-cookie-manager` Provider. It takes the following props:
+This modal must be a child of `@coinbase/cookie-manager` Provider. It takes the following props:
 
 ```typescript
 onClose: () => void: Callback to close the modal
@@ -71,7 +71,7 @@ Usage:
 
 ```typescript
 
-import { CookiePreferencesModal } from 'cb-cookie-banner';
+import { CookiePreferencesModal } from '@coinbase/cookie-banner';
 
 const CookiePreferences = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,7 +102,7 @@ It is used to determine if the user has already chosen their cookie preferences 
 If the user deletes this cookie or if `cm_default_preferences`/`cm_eu_preferences` expires (expiry of 1 year), it returns true.
 
 ```typescript
-import { CookieBanner } from 'cb-cookie-banner';
+import { CookieBanner } from '@coinbase/cookie-banner';
 
 const SomeComponent = () => {
     const visible = useIsBannerVisible();

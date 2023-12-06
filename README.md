@@ -38,12 +38,12 @@ yarn test
 
 ## Packages
 
-- `cb-cookie-manager`: Package that helps with managing first party client side cookies to adhere to CCPA and GDPR Cookie regulations. More information [here](./packages/cb-cookie-manager/README.md)
+- `@coinbase/cookie-manager`: Package that helps with managing first party client side cookies to adhere to CCPA and GDPR Cookie regulations. More information [here](./packages/cookie-manager/README.md)
 
-- `cb-cookie-banner`: Banner and modal to allow users to choose their cookie preferences.
-  More information [here](./packages/cb-cookie-banner/README.md)
+- `@coinbase/cookie-banner`: Banner and modal to allow users to choose their cookie preferences.
+  More information [here](./packages/cookie-banner/README.md)
 
-- `example`: Example app built using NextJS which uses both `cb-cookie-manager` and `cb-cookie-banner`. Code [here](./apps/example/)
+- `example`: Example app built using NextJS which uses both `@coinbase/cookie-manager` and `@coinbase/cookie-banner`. Code [here](./apps/example/)
 
 ## Contributing
 

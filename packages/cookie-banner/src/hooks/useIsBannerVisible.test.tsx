@@ -1,15 +1,15 @@
-import { renderHook } from '@testing-library/react';
 import {
   Region,
   TrackingCategory,
   TrackingPreference,
   useSavedTrackingPreference,
-} from 'cb-cookie-manager';
+} from '@coinbase/cookie-manager';
+import { renderHook } from '@testing-library/react';
 
 import useIsBannerVisible from './useIsBannerVisible';
 
-jest.mock('cb-cookie-manager', () => {
-  const originalModule = jest.requireActual('cb-cookie-manager');
+jest.mock('@coinbase/cookie-manager', () => {
+  const originalModule = jest.requireActual('@coinbase/cookie-manager');
 
   return {
     __esModule: true,

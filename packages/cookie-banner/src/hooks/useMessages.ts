@@ -1,4 +1,4 @@
-import { useTrackingManager } from 'cb-cookie-manager';
+import { useTrackingManager } from '@coinbase/cookie-manager';
 
 import messages from '../utils/messages';
 

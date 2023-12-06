@@ -1,4 +1,4 @@
-import { CookieBanner } from 'cb-cookie-banner';
+import { CookieBanner } from '@coinbase/cookie-banner';
 import { Inter } from 'next/font/google';
 
 import useTranslations from '@/hooks/useTranslations';
