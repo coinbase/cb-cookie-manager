@@ -1,0 +1,9 @@
+secure:
+  codeowners_enabled: true
+  codeowners_allow_admin_override: true
+  codeowners_slack_channel_required: false
+  required_reviews: 1
+  requires_mfa: true
+  branches:
+    - main
+  auto_assign_reviewers: true
