@@ -32,7 +32,7 @@ jobs:
         run: yarn test
       - name: Test cb-cookie-banner
         run: |
-          PACKAGE_VERSION=$(node -p "require('../packages/cb-cookie-manager').version")
+          PACKAGE_VERSION=$(node -p "require('./packages/cb-cookie-manager').version")
           cd packages/cb-cookie-banner
           yarn add cb-cookie-manager@${PACKAGE_VERSION}
           yarn test
