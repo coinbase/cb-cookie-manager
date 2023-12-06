@@ -1,5 +1,5 @@
 secure:
-  codeowners_enabled: true
+  codeowners_enabled: false
   codeowners_allow_admin_override: true
   codeowners_slack_channel_required: false
   required_reviews: 1
