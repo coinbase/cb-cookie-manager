@@ -1,1 +1,4 @@
 export const TRANSITION_TIME_MS = 100;
+const PREFERENCE_EXPIRATION_YEAR = 1;
+export const EXPIRATION_DAYS = PREFERENCE_EXPIRATION_YEAR * 365;
+export const ADVERTISING_SHARING_ALLOWED = 'advertising_sharing_allowed';
