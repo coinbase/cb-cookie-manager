@@ -1,0 +1,32 @@
+{
+  "name": "cb-cookie-banner",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "lint": "eslint . --ext .ts,.tsx --fix",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.1.2",
+    "@types/node": "^20.8.9",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/styled-components": "^5.1.0",
+    "linaria": "^5.0.4",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.1.0"
+  },
+  "dependencies": {
+    "cb-cookie-manager": "1.0.0",
+    "react-intl": "^6.5.1",
+    "styled-components": "^5.3.6"
+  }
+}
