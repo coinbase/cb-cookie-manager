@@ -59,6 +59,6 @@ module.exports = {
         useTabs: false,
       },
     ],
-    '@typescript-eslint/no-explicit-unknown': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
