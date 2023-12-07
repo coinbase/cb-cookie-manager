@@ -1,5 +1,5 @@
+import { Provider, Region } from '@coinbase/cookie-manager';
 import { renderHook } from '@testing-library/react';
-import { Provider, Region } from 'cb-cookie-manager';
 import React from 'react';
 
 import config from '../examples/config';

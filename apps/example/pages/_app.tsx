@@ -1,7 +1,7 @@
 'use client';
 import '@/styles/globals.css';
 
-import { Provider, Region, TrackingCategory, TrackingPreference } from 'cb-cookie-manager';
+import { Provider, Region, TrackingCategory, TrackingPreference } from '@coinbase/cookie-manager';
 import type { AppProps } from 'next/app';
 import { useCallback, useEffect, useRef, useState } from 'react';
 

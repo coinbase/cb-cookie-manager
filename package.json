@@ -1,5 +1,5 @@
 {
-  "name": "@coinbase/cookie-manager",
+  "name": "cb-cookie-manager",
   "version": "1.0.0",
   "description": "Cookie Manager",
   "author": "Sneh Koul <sneh.koul@coinbase.com>",
@@ -11,8 +11,7 @@
     "test": "yarn workspaces run test"
   },
   "workspaces": [
-    "packages/cb-cookie-manager",
-    "packages/cb-cookie-banner",
+    "packages/*",
     "apps/example"
   ],
   "devDependencies": {

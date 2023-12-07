@@ -1,6 +1,6 @@
 # Example
 
-This is an example [Next.js](https://nextjs.org/) project which uses both `cb-cookie-banner` and `cb-cookie-manager`
+This is an example [Next.js](https://nextjs.org/) project which uses both `@coinbase/cookie-banner` and `@coinbase/cookie-manager`
 
 ## Getting Started
 

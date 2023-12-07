@@ -1,4 +1,4 @@
-import { useSavedTrackingPreference } from 'cb-cookie-manager';
+import { useSavedTrackingPreference } from '@coinbase/cookie-manager';
 
 export default function useIsBannerVisible() {
   return !useSavedTrackingPreference();

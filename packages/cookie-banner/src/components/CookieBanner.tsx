@@ -9,7 +9,7 @@ import {
   useSavedTrackingPreferenceFromMobileApp,
   useSetTrackingPreference,
   useTrackingManager,
-} from 'cb-cookie-manager';
+} from '@coinbase/cookie-manager';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { EXPIRATION_DAYS } from '../constants';

@@ -1,5 +1,5 @@
 {
-  "name": "cb-cookie-banner",
+  "name": "@coinbase/cookie-banner",
   "version": "1.0.0",
   "main": "dist/index.js",
   "license": "Apache-2.0",
@@ -25,7 +25,7 @@
     "react-dom": "^18.1.0"
   },
   "dependencies": {
-    "cb-cookie-manager": "1.0.0",
+    "@coinbase/cookie-manager": "1.0.0",
     "react-intl": "^6.5.1",
     "styled-components": "^5.3.6"
   }

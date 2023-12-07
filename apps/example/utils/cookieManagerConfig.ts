@@ -1,4 +1,4 @@
-import { Framework, Region, TrackerType, TrackingCategory } from 'cb-cookie-manager';
+import { Framework, Region, TrackerType, TrackingCategory } from '@coinbase/cookie-manager';
 
 export const cookieManagerConfig = {
   categories: [
