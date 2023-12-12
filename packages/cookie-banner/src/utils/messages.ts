@@ -11,7 +11,7 @@ const messages = defineMessages({
   euBannerDescription: {
     id: `${i18nKey}.euBannerDescription`,
     defaultMessage:
-      'We use cookies and similar technologies on our websites to enhance and tailor your experience, analyze our traffic, and for security and marketing. Select "Accept All" to allow Coinbase and its trusted affiliates and partners to use cookies and similar technologies or click <button>Manage Settings</button> to individually select which cookies you allow. You can withdraw your consent at any time. For more information see our <link>Cookie Policy</link>.',
+      'We use cookies and similar technologies on our websites to enhance and tailor your experience, analyze our traffic, and for security and marketing. Select "Accept All" to allow <span> companyName </span> and its trusted affiliates and partners to use cookies and similar technologies or click <button>Manage Settings</button> to individually select which cookies you allow. You can withdraw your consent at any time. For more information see our <link>Cookie Policy</link>.',
     description: 'Cookie banner for managing cooking consent preferences',
   },
   bannerSettingsCTA: {

@@ -1,10 +1,10 @@
-import { useTrackingManager } from '@coinbase/cookie-manager';
+import { Region, useTrackingManager } from '@coinbase/cookie-manager';
 
 import messages from '../utils/messages';
 
 const useMessages = () => {
   const { region } = useTrackingManager();
-  if (region === 'EU') return messages.euMessages;
+  if (region === Region.EU) return messages.euMessages;
   return messages.defaultMessages;
 };
 

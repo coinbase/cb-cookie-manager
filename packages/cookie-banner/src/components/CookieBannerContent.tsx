@@ -23,9 +23,17 @@ type Props = {
   showPreferencesModal: () => void;
   hasDismissed: boolean;
   link?: string;
+  companyName: string;
 };
 
-function BannerContent({ onDismiss, onAccept, showPreferencesModal, hasDismissed, link }: Props) {
+function BannerContent({
+  onDismiss,
+  onAccept,
+  showPreferencesModal,
+  hasDismissed,
+  link,
+  companyName,
+}: Props) {
   const { log } = useTrackingManager();
 
   const [isVisible, closeWithTransition] = useIsVisibleWithTransition(!hasDismissed, 100);
@@ -61,6 +69,7 @@ function BannerContent({ onDismiss, onAccept, showPreferencesModal, hasDismissed
       <DescriptionText>
         {formatMessage(messages.defaultBannerDescription, {
           link: (node: React.ReactNode) => CookieLink(node, link),
+          span: () => <span key="span">{companyName}</span>,
           button: (node: React.ReactNode) => [
             <ManageSettingsButton
               key="ManageCookieSettingsBtn"
@@ -118,7 +127,7 @@ const MobileDismissButton = styled(DismissButton)`
 
 const DesktopDismissButton = styled(DismissButton)`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    display: none;
+    display: flex;
   }
 `;
 
@@ -145,7 +154,6 @@ const SettingsCTA = styled.button`
 const DescriptionText = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.fontSize.sm};
-    width: 734px;
     line-height: 23px;
     margin-right: ${theme.size.lg};
 
@@ -168,7 +176,7 @@ const Container = styled.div<{ visible: boolean }>`
     background-color: ${theme.colors.backgroundMuted};
     z-index: ${theme.zIndex.overlay};
     color: ${theme.colors.onBackgroundMuted};
-    padding: ${`${theme.size.md} 60px ${theme.size.md} 160px`};
+    padding: ${`${theme.size.md} 60px`};
     justify-content: space-between;
     ${visible ? 'bottom: 0' : 'bottom: -140px'};
     transition: bottom ${TRANSITION_TIME_MS}ms;

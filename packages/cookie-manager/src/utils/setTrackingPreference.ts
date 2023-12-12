@@ -22,7 +22,7 @@ const setTrackingPreference = (
     path: '/',
   };
 
-  if (region === 'EU') {
+  if (region === Region.EU) {
     setCookie(EU_CONSENT_PREFERENCES_COOKIE, newConsentPreference, cookieOptions);
   } else {
     setCookie(DEFAULT_CONSENT_PREFERENCES_COOKIE, newConsentPreference, cookieOptions);

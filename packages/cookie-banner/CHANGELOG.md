@@ -4,7 +4,7 @@
 
 #### 🐞 Fixes
 
-- Update the cookie banner text
+- Update the cookie banner text and some CSS
 
 ## 1.0.0 (12/7/2023 PST)
 

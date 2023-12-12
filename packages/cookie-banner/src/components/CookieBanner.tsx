@@ -25,6 +25,7 @@ type Props = {
   useTranslations?:
     | ((() => [boolean, Record<string, string>]) & (() => [boolean, Record<string, string>]))
     | undefined;
+  companyName: string;
 };
 
 const cookieOptions = {
@@ -100,7 +101,7 @@ export const useBanner = () => {
   };
 };
 
-function Banner({ theme, link, useTranslations }: Props) {
+function Banner({ theme, link, useTranslations, companyName }: Props) {
   const { hasDismissed, handleBannerDismiss, handleAcceptAll, closeModal, openModal, isModalOpen } =
     useBanner();
 
@@ -113,6 +114,7 @@ function Banner({ theme, link, useTranslations }: Props) {
         showPreferencesModal={openModal}
         hasDismissed={hasDismissed}
         link={link}
+        companyName={companyName}
       />
     </UIProviders>
   );
