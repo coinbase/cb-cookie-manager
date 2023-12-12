@@ -37,6 +37,7 @@ It takes the following props:
 
 - `link` : Link to your Cookie Policy
 - `useTranslations` - Hook to return translations for your cookie banner's texts. More info [here](#usetranslations)
+- `companyName` - Name of your comapany/product
 
 Example usage:
 
@@ -48,6 +49,7 @@ const SomeComponent = () => {
         <CookieBanner
             link={'https://www.coinbase.com/legal/cookie'}
             useTranslations={useTranslations}
+            companyName={'XYZ'}
         />
     )
 };
