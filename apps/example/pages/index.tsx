@@ -11,6 +11,7 @@ export default function Home() {
       <CookieBanner
         link={'https://www.coinbase.com/legal/cookie'}
         useTranslations={useTranslations}
+        companyName={'Coinbase'}
       />
     </main>
   );

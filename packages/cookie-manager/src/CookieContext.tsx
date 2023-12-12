@@ -183,7 +183,7 @@ const getTrackingPreference = (
   config: Config
 ): TrackingPreference => {
   const trackingPreference =
-    region === 'EU'
+    region === Region.EU
       ? cookieCache[EU_CONSENT_PREFERENCES_COOKIE]
       : cookieCache[DEFAULT_CONSENT_PREFERENCES_COOKIE];
   return trackingPreference || getDefaultTrackingPreference(region, config);

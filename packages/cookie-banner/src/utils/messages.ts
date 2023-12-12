@@ -5,13 +5,13 @@ const messages = defineMessages({
   defaultBannerDescription: {
     id: `${i18nKey}.defaultBannerDescription`,
     defaultMessage:
-      'We use our own and third-party cookies on our websites to enhance your experience, analyze traffic, and for security and marketing. For more info or to modify cookies, see our <link>Cookie Policy</link> or go to <button>Manage Settings</button>.',
+      'We use cookies and similar technologies on our websites to enhance and tailor your experience, analyze our traffic, and for security and marketing. You can choose not to allow some type of cookies by clicking <button>Manage Settings</button>. For more information see our <link>Cookie Policy</link>.',
     description: 'Cookie banner for managing cooking consent preferences',
   },
   euBannerDescription: {
     id: `${i18nKey}.euBannerDescription`,
     defaultMessage:
-      'We use our own cookies as well as third-party cookies on our websites to enhance your experience, analyze our traffic, and for security and marketing. For more info or to modify cookies, see our <link>Cookie Policy</link> or go to <button>Manage Settings</button>. Select "Accept All" to allow them to be used.',
+      'We use cookies and similar technologies on our websites to enhance and tailor your experience, analyze our traffic, and for security and marketing. Select "Accept All" to allow <span> companyName </span> and its trusted affiliates and partners to use cookies and similar technologies or click <button>Manage Settings</button> to individually select which cookies you allow. You can withdraw your consent at any time. For more information see our <link>Cookie Policy</link>.',
     description: 'Cookie banner for managing cooking consent preferences',
   },
   bannerSettingsCTA: {
