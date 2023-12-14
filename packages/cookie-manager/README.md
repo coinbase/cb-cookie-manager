@@ -73,6 +73,7 @@ export default {
         {
           id: 'locale',
           type: TrackerType.COOKIE,
+          expiry: new Date('2024-09-29T00:00:00.000Z'),
         },
       ],
     },
@@ -82,6 +83,7 @@ export default {
         {
           id: 'some_cookie',
           type: TrackerType.COOKIE,
+          sessionCookie: true,
         },
       ],
     },
@@ -143,7 +145,27 @@ You can also specify regex for a given cookie as follows:
 
 Any id with `-regex` at the end should contain a `regex` which will be used to match different cookies.
 
-In this example: `id_ac7a5c3da45e3612b44543a702e42b01` will also be allowed
+In this example: `id_ac7a5c3da45e3612b44543a702e42b01` will also be allowed.
+
+Each cookie by default has an expiry of 1 year but you can also override this by specifying an expiry for the cookie within the config:
+
+```
+ {
+    id: 'locale',
+    type: TrackerType.COOKIE,
+    expiry: new Date('2024-09-29T00:00:00.000Z')
+}
+```
+
+If you want a cookie to only be valid for a session, it can optionally be marked as a session cookie as follows:
+
+```
+{
+  id: 'some_cookie',
+  type: TrackerType.COOKIE,
+  sessionCookie: true
+}
+```
 
 ## Methods
 
