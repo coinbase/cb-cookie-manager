@@ -42,6 +42,7 @@ export type Tracker = {
   id: string;
   type: TrackerType;
   regex?: string;
+  expiry?: Date;
 };
 
 export type ConfigCategoryInfo = {
