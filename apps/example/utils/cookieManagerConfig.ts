@@ -9,6 +9,11 @@ export const cookieManagerConfig = {
         {
           id: 'ip_country',
           type: TrackerType.COOKIE,
+          expiry: new Date('2024-09-29T00:00:00.000Z'),
+        },
+        {
+          id: 'locale',
+          type: TrackerType.COOKIE,
         },
       ],
     },
@@ -16,8 +21,9 @@ export const cookieManagerConfig = {
       id: TrackingCategory.PERFORMANCE,
       trackers: [
         {
-          id: 'cb-rfm',
+          id: 'rfm',
           type: TrackerType.COOKIE,
+          sessionCookie: true,
         },
       ],
     },

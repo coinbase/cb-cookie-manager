@@ -41,6 +41,7 @@ export enum TrackerType {
 export type Tracker = {
   id: string;
   type: TrackerType;
+  sessionCookie?: boolean;
   regex?: string;
   expiry?: Date;
 };

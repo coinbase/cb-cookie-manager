@@ -14,10 +14,17 @@ const setExpiryForCookie = (cookieName: string, config: Config) => {
     trackerMatches(tracker, cookieName)
   );
 
+  if (!cookieConfig) {
+    return undefined;
+  }
+
+  // if its a session cookie, do not set an expiry
+  if (cookieConfig && cookieConfig.sessionCookie) {
+    return undefined;
+  }
+
   if (cookieConfig && cookieConfig.expiry) {
-    return {
-      expires: cookieConfig.expiry,
-    };
+    return cookieConfig.expiry;
   }
   // if cookie is in a category with an expiry, set the expiry to that
   const trackingCategoryExpiration = CATEGORY_EXPIRATION_DAYS[trackingCategory.id];
@@ -26,9 +33,7 @@ const setExpiryForCookie = (cookieName: string, config: Config) => {
   }
   const expiration = new Date();
   expiration.setDate(expiration.getDate() + trackingCategoryExpiration);
-  return {
-    expires: expiration,
-  };
+  return expiration;
 };
 
 export default setExpiryForCookie;

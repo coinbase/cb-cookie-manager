@@ -4,8 +4,8 @@
 
 # Contents
 
-- [Introduction](#Introduction)
 - [Installation](#installation)
+- [Introduction](#Introduction)
 - [Methods](#methods)
   - [Provider](#provider)
   - [useCookie](#usecookie)
@@ -19,6 +19,18 @@
   - [useTrackingManager](#usetrackingmanager)
   - [isOptOut](#isoptout)
 - [License](#license)
+
+## Installation
+
+Install the package as follows:
+
+```shell
+yarn add @coinbase/cookie-manager
+
+npm install @coinbase/cookie-manager
+
+pnpm install @coinbase/cookie-manager
+```
 
 ## Introduction
 
@@ -132,18 +144,6 @@ You can also specify regex for a given cookie as follows:
 Any id with `-regex` at the end should contain a `regex` which will be used to match different cookies.
 
 In this example: `id_ac7a5c3da45e3612b44543a702e42b01` will also be allowed
-
-## Installation
-
-Install the package as follows:
-
-```shell
-yarn add @coinbase/cookie-manager
-
-npm install @coinbase/cookie-manager
-
-pnpm install @coinbase/cookie-manager
-```
 
 ## Methods
 
@@ -476,4 +476,4 @@ const SomeComponent = () => {
 
 ## License
 
-Licensed under the Apache License. See [LICENSE](./LICENSE) for more information.
+Licensed under the Apache License. See [LICENSE](./LICENSE.md) for more information.

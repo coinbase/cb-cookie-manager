@@ -1,6 +1,6 @@
 {
   "name": "@coinbase/cookie-manager",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Coinbase Cookie Manager",
   "main": "dist/index.js",
   "license": "Apache-2.0",
@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.1.1",
     "@types/jest": "^29.5.8",
     "@types/js-cookie": "^3.0.5",
     "@types/node": "^20.8.9",
@@ -21,9 +22,12 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
-    "@testing-library/react": "^14.1.1"
+    "wrap-ansi": "^7.0.0",
+    "wrap-ansi-cjs": "7.0.0"
   },
   "dependencies": {
+    "@coinbase/cookie-banner": "1.0.1",
+    "@coinbase/cookie-manager": "1.1.0",
     "js-cookie": "^3.0.5"
   }
 }

@@ -10,6 +10,11 @@ export default {
           id: 'locale',
           type: TrackerType.COOKIE,
         },
+        {
+          id: 'test',
+          type: TrackerType.COOKIE,
+          expiry: new Date('2038-01-01T00:00:00.000Z'),
+        },
       ],
     },
     {
@@ -36,6 +41,7 @@ export default {
           id: 'mode',
           // Used to remember if the user dismissed the Advanced mode NUX modal
           type: TrackerType.COOKIE,
+          sessionCookie: true,
         },
       ],
     },

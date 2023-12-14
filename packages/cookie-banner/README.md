@@ -201,4 +201,4 @@ The returned record should contain all the keys mentioned in this example. All t
 
 ## License
 
-Licensed under the Apache License. See [LICENSE](./LICENSE) for more information.
+Licensed under the Apache License. See [LICENSE](./LICENSE.md) for more information.
