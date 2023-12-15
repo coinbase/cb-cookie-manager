@@ -41,13 +41,16 @@ export enum TrackerType {
 export type Tracker = {
   id: string;
   type: TrackerType;
+  sessionCookie?: boolean;
   regex?: string;
+  expiry?: number;
 };
 
 export type ConfigCategoryInfo = {
   id: TrackingCategory;
   trackers: Array<Tracker>;
   required?: boolean;
+  expiry: number;
 };
 
 export type Config = {

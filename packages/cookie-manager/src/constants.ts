@@ -4,6 +4,7 @@ export const EU_CONSENT_PREFERENCES_COOKIE = 'cm_eu_preferences';
 export const DEFAULT_CONSENT_PREFERENCES_COOKIE = 'cm_default_preferences';
 export const ADVERTISING_SHARING_ALLOWED = 'advertising_sharing_allowed';
 export const IS_MOBILE_APP = 'is_mobile_app';
+export const ONE_DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000;
 
 export const GEOLOCATION_RULES: Array<GeolocationRule> = [
   {

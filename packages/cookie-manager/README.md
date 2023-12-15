@@ -4,8 +4,8 @@
 
 # Contents
 
-- [Introduction](#Introduction)
 - [Installation](#installation)
+- [Introduction](#Introduction)
 - [Methods](#methods)
   - [Provider](#provider)
   - [useCookie](#usecookie)
@@ -19,6 +19,18 @@
   - [useTrackingManager](#usetrackingmanager)
   - [isOptOut](#isoptout)
 - [License](#license)
+
+## Installation
+
+Install the package as follows:
+
+```shell
+yarn add @coinbase/cookie-manager
+
+npm install @coinbase/cookie-manager
+
+pnpm install @coinbase/cookie-manager
+```
 
 ## Introduction
 
@@ -57,24 +69,29 @@ export default {
     {
       id: TrackingCategory.NECESSARY,
       required: true,
+      expiry: 365,
       trackers: [
         {
           id: 'locale',
           type: TrackerType.COOKIE,
+          expiry: 10,
         },
       ],
     },
     {
       id: TrackingCategory.PERFORMANCE,
+      expiry: 365,
       trackers: [
         {
           id: 'some_cookie',
           type: TrackerType.COOKIE,
+          sessionCookie: true,
         },
       ],
     },
     {
       id: TrackingCategory.FUNCTIONAL,
+      expiry: 365,
       trackers: [
         {
           id: 'mode',
@@ -84,6 +101,7 @@ export default {
     },
     {
       id: TrackingCategory.TARGETING,
+      expiry: 365,
       trackers: [
         {
           id: 'id-regex',
@@ -94,6 +112,7 @@ export default {
     },
     {
       id: TrackingCategory.DELETE_IF_SEEN,
+      expiry: 0,
       trackers: [
         {
           id: 'cgl_prog',
@@ -115,7 +134,7 @@ export default {
 };
 ```
 
-In this config, under each category you can specify what all cookies should be allowed. Everything else, if detected will be deleted at an interval of 500 ms.
+In this config, under each category you can specify what all cookies that should be allowed. Everything else, if detected will be deleted at an interval of 500 ms.
 
 `DELETE_IF_SEEN` can be used to specify the cookies which should be deleted if seen on the browser
 
@@ -131,19 +150,47 @@ You can also specify regex for a given cookie as follows:
 
 Any id with `-regex` at the end should contain a `regex` which will be used to match different cookies.
 
-In this example: `id_ac7a5c3da45e3612b44543a702e42b01` will also be allowed
+In this example: `id_ac7a5c3da45e3612b44543a702e42b01` will also be allowed.
 
-## Installation
+You need to specify the retention days for a category using the expiry key as follows:
 
-Install the package as follows:
-
-```shell
-yarn add @coinbase/cookie-manager
-
-npm install @coinbase/cookie-manager
-
-pnpm install @coinbase/cookie-manager
 ```
+{
+      id: TrackingCategory.NECESSARY,
+      required: true,
+      expiry: 365,
+      trackers: [
+        {
+          id: 'locale',
+          type: TrackerType.COOKIE,
+          expiry: 10,
+        },
+      ],
+    }
+
+```
+
+Each cookie by default will inherit its category's retention duration but you can override this by specifying an expiry (in days) for the cookie:
+
+```
+ {
+    id: 'locale',
+    type: TrackerType.COOKIE,
+    expiry: 10
+}
+```
+
+If you want a cookie to only be valid for a session, it can optionally be marked as a session cookie as follows:
+
+```
+{
+  id: 'some_cookie',
+  type: TrackerType.COOKIE,
+  sessionCookie: true
+}
+```
+
+**Note: Session cookies only last as long as your browser is open and are automatically deleted when a user closes the browser**
 
 ## Methods
 
@@ -476,4 +523,4 @@ const SomeComponent = () => {
 
 ## License
 
-Licensed under the Apache License. See [LICENSE](./LICENSE) for more information.
+Licensed under the Apache License. See [LICENSE](./LICENSE.md) for more information.

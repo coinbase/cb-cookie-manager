@@ -25,6 +25,7 @@ import { getDomainWithoutSubdomain, getHostname } from './utils/getDomain';
 import getTrackerInfo from './utils/getTrackerInfo';
 import hasConsent from './utils/hasConsent';
 import isMaxKBSize from './utils/isMaxKBSize';
+import setExpiryForCookie from './utils/setExpiryForCookie';
 import setGTMVariables from './utils/setGTMVariables';
 
 type CookieCache = Record<string, any>;
@@ -161,10 +162,18 @@ const setCookieFunction = ({
       if (isMaxKBSize(encodeURIComponent(stringValue) + cookieName, cookieSize)) {
         onError(new Error(`${cookieName} value exceeds ${cookieSize}KB`));
       } else {
-        const newOptions = options ? { ...options } : undefined;
+        let newOptions = options ? { ...options } : undefined;
 
         if (newOptions?.size) {
           delete newOptions.size;
+        }
+        const expiration = setExpiryForCookie(cookieName, config) as number | Date | undefined;
+        if (expiration) {
+          if (newOptions) {
+            newOptions = { ...newOptions, expires: expiration };
+          } else {
+            newOptions = { expires: expiration };
+          }
         }
         Cookies.set(cookieName, stringValue, newOptions);
       }

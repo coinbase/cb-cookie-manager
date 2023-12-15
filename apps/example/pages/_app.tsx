@@ -9,11 +9,12 @@ import { cookieManagerConfig } from '../utils/cookieManagerConfig';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
+  const trackingPreference = useRef<TrackingPreference | undefined>();
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const trackingPreference = useRef<TrackingPreference | undefined>();
   const setTrackingPreference = useCallback((newPreference: TrackingPreference) => {
     const priorConsent = trackingPreference.current?.consent;
     trackingPreference.current = newPreference;
@@ -38,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
       window.location.reload();
     }
   }, []);
+
   if (!isMounted) return null;
 
   return (
@@ -45,7 +47,7 @@ export default function App({ Component, pageProps }: AppProps) {
       onError={console.error}
       projectName="test"
       locale="en"
-      region={Region.EU}
+      region={Region.DEFAULT}
       config={cookieManagerConfig}
       log={console.log}
       onPreferenceChange={setTrackingPreference}
