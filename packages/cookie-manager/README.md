@@ -74,7 +74,7 @@ export default {
         {
           id: 'locale',
           type: TrackerType.COOKIE,
-          expiry: new Date('2024-09-29T00:00:00.000Z'),
+          expiry: 10,
         },
       ],
     },
@@ -163,7 +163,7 @@ You need to specify the retention days for a category using the expiry key as fo
         {
           id: 'locale',
           type: TrackerType.COOKIE,
-          expiry: new Date('2024-09-29T00:00:00.000Z'),
+          expiry: 10,
         },
       ],
     }

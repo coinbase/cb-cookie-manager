@@ -34,11 +34,3 @@ export const TRACKER_CATEGORIES: Array<TrackingCategory> = [
   TrackingCategory.PERFORMANCE,
   TrackingCategory.TARGETING,
 ];
-
-export const CATEGORY_EXPIRATION_DAYS: Record<TrackingCategory, number> = {
-  [TrackingCategory.NECESSARY]: 365,
-  [TrackingCategory.FUNCTIONAL]: 365,
-  [TrackingCategory.PERFORMANCE]: 365,
-  [TrackingCategory.TARGETING]: 365,
-  [TrackingCategory.DELETE_IF_SEEN]: 0,
-};
