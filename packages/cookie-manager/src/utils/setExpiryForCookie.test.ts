@@ -6,7 +6,9 @@ describe('setExpiryForCookie', () => {
     expect(setExpiryForCookie('cookieName', config)).toEqual(undefined);
   });
   it('returns expiry when cookie config has an expiry', () => {
-    expect(setExpiryForCookie('test', config)).toEqual(new Date('2038-01-01T00:00:00.000Z'));
+    const expiration = new Date();
+    expiration.setDate(expiration.getDate() + 10);
+    expect(setExpiryForCookie('test', config)).toEqual(expiration);
   });
   it('returns expiry when cookie is in a category with an expiry', () => {
     const expiration = new Date();

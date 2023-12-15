@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 (12/11/2023 PST)
+
+#### Chore
+
+- Update the cookie manager version and fix Close Icon styling
+
 ## 1.0.1 (12/11/2023 PST)
 
 #### 🐞 Fixes

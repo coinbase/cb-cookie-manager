@@ -4,6 +4,7 @@ export default {
   categories: [
     {
       id: TrackingCategory.NECESSARY,
+      expiry: 365,
       required: true,
       trackers: [
         {
@@ -13,12 +14,13 @@ export default {
         {
           id: 'test',
           type: TrackerType.COOKIE,
-          expiry: new Date('2038-01-01T00:00:00.000Z'),
+          expiry: 10,
         },
       ],
     },
     {
       id: TrackingCategory.PERFORMANCE,
+      expiry: 365,
       trackers: [
         {
           id: 'some_cookie',
@@ -36,6 +38,7 @@ export default {
     },
     {
       id: TrackingCategory.FUNCTIONAL,
+      expiry: 365,
       trackers: [
         {
           id: 'mode',
@@ -47,6 +50,7 @@ export default {
     },
     {
       id: TrackingCategory.TARGETING,
+      expiry: 365,
       trackers: [
         {
           id: 'gclid',
@@ -61,6 +65,7 @@ export default {
     },
     {
       id: TrackingCategory.DELETE_IF_SEEN,
+      expiry: 0,
       trackers: [
         {
           id: 'cgl_prog',

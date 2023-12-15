@@ -4,12 +4,13 @@ export const cookieManagerConfig = {
   categories: [
     {
       id: TrackingCategory.NECESSARY,
+      expiry: 365,
       required: true,
       trackers: [
         {
           id: 'ip_country',
           type: TrackerType.COOKIE,
-          expiry: new Date('2024-09-29T00:00:00.000Z'),
+          expiry: 10,
         },
         {
           id: 'locale',
@@ -19,6 +20,7 @@ export const cookieManagerConfig = {
     },
     {
       id: TrackingCategory.PERFORMANCE,
+      expiry: 365,
       trackers: [
         {
           id: 'rfm',
@@ -29,6 +31,7 @@ export const cookieManagerConfig = {
     },
     {
       id: TrackingCategory.FUNCTIONAL,
+      expiry: 365,
       trackers: [
         {
           id: 'mode',
@@ -38,6 +41,7 @@ export const cookieManagerConfig = {
     },
     {
       id: TrackingCategory.TARGETING,
+      expiry: 365,
       trackers: [
         {
           id: 'gclid',
@@ -47,6 +51,7 @@ export const cookieManagerConfig = {
     },
     {
       id: TrackingCategory.DELETE_IF_SEEN,
+      expiry: 0,
       trackers: [
         {
           id: 'challenge-regex',

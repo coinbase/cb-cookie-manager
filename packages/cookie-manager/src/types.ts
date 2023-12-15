@@ -43,13 +43,14 @@ export type Tracker = {
   type: TrackerType;
   sessionCookie?: boolean;
   regex?: string;
-  expiry?: Date;
+  expiry?: number;
 };
 
 export type ConfigCategoryInfo = {
   id: TrackingCategory;
   trackers: Array<Tracker>;
   required?: boolean;
+  expiry: number;
 };
 
 export type Config = {

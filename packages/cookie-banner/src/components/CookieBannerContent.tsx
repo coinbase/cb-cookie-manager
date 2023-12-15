@@ -126,8 +126,9 @@ const MobileDismissButton = styled(DismissButton)`
 `;
 
 const DesktopDismissButton = styled(DismissButton)`
+  display: flex;
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    display: flex;
+    display: none;
   }
 `;
 

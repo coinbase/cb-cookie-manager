@@ -69,6 +69,7 @@ export default {
     {
       id: TrackingCategory.NECESSARY,
       required: true,
+      expiry: 365,
       trackers: [
         {
           id: 'locale',
@@ -79,6 +80,7 @@ export default {
     },
     {
       id: TrackingCategory.PERFORMANCE,
+      expiry: 365,
       trackers: [
         {
           id: 'some_cookie',
@@ -89,6 +91,7 @@ export default {
     },
     {
       id: TrackingCategory.FUNCTIONAL,
+      expiry: 365,
       trackers: [
         {
           id: 'mode',
@@ -98,6 +101,7 @@ export default {
     },
     {
       id: TrackingCategory.TARGETING,
+      expiry: 365,
       trackers: [
         {
           id: 'id-regex',
@@ -108,6 +112,7 @@ export default {
     },
     {
       id: TrackingCategory.DELETE_IF_SEEN,
+      expiry: 0,
       trackers: [
         {
           id: 'cgl_prog',
@@ -129,7 +134,7 @@ export default {
 };
 ```
 
-In this config, under each category you can specify what all cookies should be allowed. Everything else, if detected will be deleted at an interval of 500 ms.
+In this config, under each category you can specify what all cookies that should be allowed. Everything else, if detected will be deleted at an interval of 500 ms.
 
 `DELETE_IF_SEEN` can be used to specify the cookies which should be deleted if seen on the browser
 
@@ -147,13 +152,31 @@ Any id with `-regex` at the end should contain a `regex` which will be used to m
 
 In this example: `id_ac7a5c3da45e3612b44543a702e42b01` will also be allowed.
 
-Each cookie by default has an expiry of 1 year but you can also override this by specifying an expiry for the cookie within the config:
+You need to specify the retention days for a category using the expiry key as follows:
+
+```
+{
+      id: TrackingCategory.NECESSARY,
+      required: true,
+      expiry: 365,
+      trackers: [
+        {
+          id: 'locale',
+          type: TrackerType.COOKIE,
+          expiry: new Date('2024-09-29T00:00:00.000Z'),
+        },
+      ],
+    }
+
+```
+
+Each cookie by default will inherit its category's retention duration but you can override this by specifying an expiry (in days) for the cookie:
 
 ```
  {
     id: 'locale',
     type: TrackerType.COOKIE,
-    expiry: new Date('2024-09-29T00:00:00.000Z')
+    expiry: 10
 }
 ```
 
@@ -166,6 +189,8 @@ If you want a cookie to only be valid for a session, it can optionally be marked
   sessionCookie: true
 }
 ```
+
+**Note: Session cookies only last as long as your browser is open and are automatically deleted when a user closes the browser**
 
 ## Methods
 
