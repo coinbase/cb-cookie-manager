@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 (01/05/2024)
+
+#### Bug
+
+- Update the cookie manager version
+
 ## 1.0.2 (12/11/2023 PST)
 
 #### Chore

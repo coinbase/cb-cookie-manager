@@ -39,7 +39,7 @@ export const CookieProvider = ({ children }: Props) => {
   const { config, region, shadowMode, log, onPreferenceChange } = useTrackingManager();
 
   const POLL_INTERVAL = 500;
-  let cookieValues: Record<string, any> = {};
+  let cookieValues: Record<string, any> = getAllCookies();
   let trackingPreference: TrackingPreference;
   let adTrackingPreference: AdTrackingPreference;
 
