@@ -1,5 +1,5 @@
 import Cookies, { CookieAttributes } from 'js-cookie';
-import React, { createContext, useCallback, useContext, useEffect } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 import {
   ADVERTISING_SHARING_ALLOWED,
@@ -39,7 +39,7 @@ export const CookieProvider = ({ children }: Props) => {
   const { config, region, shadowMode, log, onPreferenceChange } = useTrackingManager();
 
   const POLL_INTERVAL = 500;
-  let cookieValues: Record<string, any> = {};
+  const [cookieValues, setCookieValues] = useState(() => getAllCookies());
   let trackingPreference: TrackingPreference;
   let adTrackingPreference: AdTrackingPreference;
 
@@ -63,12 +63,12 @@ export const CookieProvider = ({ children }: Props) => {
       const checkCookies = () => {
         const currentCookie = getAllCookies();
         if (!areRecordsEqual(cookieValues, currentCookie)) {
-          cookieValues = currentCookie;
-          trackingPreference = getTrackingPreference(cookieValues, region, config);
-          adTrackingPreference = getAdTrackingPreference(cookieValues);
+          setCookieValues(currentCookie);
+          trackingPreference = getTrackingPreference(currentCookie, region, config);
+          adTrackingPreference = getAdTrackingPreference(currentCookie);
           setGTMVariables(trackingPreference, adTrackingPreference);
           const cookiesToRemove: Array<string> = [];
-          Object.keys(cookieValues).forEach((c) => {
+          Object.keys(currentCookie).forEach((c) => {
             const trackerInfo = getTrackerInfo(c, config);
             if (REQUIRED_COOKIE_MANAGER_COOKIES.includes(c)) {
               return;
