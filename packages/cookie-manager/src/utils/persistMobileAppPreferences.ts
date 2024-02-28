@@ -1,8 +1,8 @@
 /*
- * The purpose here is to allow the iOS/Android app to send a is_mobile_app=true
- * parameter that should indicate to the web surfaces not to show the
- * cookie banner
- *
+ * From the iOS app, the `Do Not Track` preference from the app should be read and
+ * a `app_tracking_transparency_enabled=true` URL parameter is set to indicate the
+ * app tracking pereferences. The setting is then persisted in a cookie to honor the
+ * user preference for when a WebView is opened from within the mobile app.
  */
 
 import { IS_MOBILE_APP } from '../constants';
@@ -10,7 +10,7 @@ import { getDomainWithoutSubdomain } from './getDomain';
 
 export function persistMobileAppPreferences() {
   try {
-    const isMobileApp = getIsMobileAppFromQueryParams();
+    const isMobileApp = getAppTrackingTransparencyFromQueryParams();
     if (isMobileApp) {
       document.cookie = `${IS_MOBILE_APP}=true; domain=${getDomainWithoutSubdomain()}`;
     }
@@ -19,12 +19,12 @@ export function persistMobileAppPreferences() {
   }
 }
 
-export function getIsMobileAppFromQueryParams() {
+export function getAppTrackingTransparencyFromQueryParams() {
   try {
     const params = new URLSearchParams(window.location.search);
-    const isWebView = params.get('webview') === 'true';
-    const isMobileApp = params.get(IS_MOBILE_APP) === 'true';
-    return Boolean(isWebView || isMobileApp);
+
+    const appTrackingTransparency = params.get('app_tracking_transparency_enabled') === 'true';
+    return Boolean(appTrackingTransparency);
   } catch (e) {
     // Ignore, we are not in a browser.
   }

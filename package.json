@@ -11,7 +11,8 @@
     "test": "yarn workspaces run test"
   },
   "workspaces": [
-    "packages/*",
+    "packages/cookie-manager",
+    "packages/cookie-banner",
     "apps/example"
   ],
   "devDependencies": {

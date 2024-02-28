@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 (02/26/2024)
+
+#### 🚀 Updates
+
+- Remove check for `is_mobile_app` from URL parameter from a WebView and use `app_tracking_transparency_enabled` to persist `is_mobile_app` cookie. This implementation is used to honor the Apple Do Not Track (DNT) configuration from a users' device instead of disabling cookies solely because the request is coming from a mobile device.
+
 ## 1.1.1 (01/05/2024)
 
 #### Bug

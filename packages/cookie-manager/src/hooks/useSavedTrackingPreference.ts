@@ -8,14 +8,14 @@ import {
 import { useCookie } from '../CookieContext';
 import { useTrackingManager } from '../TrackingManagerContext';
 import { Region, TrackingCategory, TrackingPreference } from '../types';
-import { getIsMobileAppFromQueryParams } from '../utils/persistMobileAppPreferences';
+import { getAppTrackingTransparencyFromQueryParams } from '../utils/persistMobileAppPreferences';
 
 export const useSavedTrackingPreferenceFromMobileApp = (): TrackingPreference | undefined => {
   const { region } = useTrackingManager();
 
   const [isMobileAppFromCookie] = useCookie(IS_MOBILE_APP);
 
-  const isMobileAppFromQueryParams = useMemo(() => getIsMobileAppFromQueryParams(), []);
+  const isMobileAppFromQueryParams = useMemo(() => getAppTrackingTransparencyFromQueryParams(), []);
 
   const isMobileApp = isMobileAppFromCookie || isMobileAppFromQueryParams;
 

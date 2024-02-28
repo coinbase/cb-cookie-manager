@@ -23,17 +23,18 @@ It can manage four different types of first-party client side cookies:
 
 ## Getting Started
 
-This repo uses a yarn workspace. To get started, run:
+This repo uses a yarn workspace. To get started with the example app:
 
 ```shell
-# Install Dependencies
+cd /path/to/coinbase/cb-cookie-manager
+
+# Install Dependencies and Build Packages
 yarn install
+yarn build
 
-# To lint all files
-yarn lint
-
-# To run tests
-yarn test
+# Run Example App
+cd /path/to/coinbase/cb-cookie-manager/example/app
+yarn dev
 ```
 
 ## Packages
