@@ -19,6 +19,7 @@ jobs:
       - name: Publish cookie-banner
         working-directory: ./packages/cookie-banner
         run: |
+          yarn install
           yarn build
           yarn npm publish --access=public
         env:

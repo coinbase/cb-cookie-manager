@@ -19,6 +19,7 @@ jobs:
       - name: Publish cookie-manager
         working-directory: ./packages/cookie-manager
         run: |
+          yarn install
           yarn build
           yarn npm publish --access=public
         env:
