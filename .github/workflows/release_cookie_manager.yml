@@ -21,7 +21,7 @@ jobs:
         run: |
           yarn install
           yarn build
-          yarn npm publish --access=public
+          yarn publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         id: publish-cookie-manager
