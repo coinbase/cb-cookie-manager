@@ -1,6 +1,6 @@
 {
   "name": "@coinbase/cookie-manager",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Coinbase Cookie Manager",
   "main": "dist/index.js",
   "license": "Apache-2.0",
@@ -26,8 +26,6 @@
     "wrap-ansi-cjs": "7.0.0"
   },
   "dependencies": {
-    "@coinbase/cookie-banner": "1.0.1",
-    "@coinbase/cookie-manager": "1.1.0",
     "js-cookie": "^3.0.5"
   }
 }

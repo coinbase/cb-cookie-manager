@@ -16,6 +16,6 @@ export { default as getDefaultTrackingPreference } from './utils/getDefaultTrack
 export { getDomainWithoutSubdomain } from './utils/getDomain';
 export { default as isOptOut } from './utils/isOptOut';
 export {
-  getIsMobileAppFromQueryParams,
+  getAppTrackingTransparencyFromQueryParams,
   persistMobileAppPreferences,
 } from './utils/persistMobileAppPreferences';
