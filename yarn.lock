@@ -1077,9 +1077,40 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@coinbase/cookie-manager@1.1.2":
-  version "1.1.1"
+"@coinbase/cookie-banner@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@coinbase/cookie-banner/-/cookie-banner-1.0.1.tgz#90a10f13b62356baca41117cbcf98a20bff7e1cd"
+  integrity sha512-tVgNjNaSCC7nts/uju+vWkucWyXPSL4CaZflc5rkLuEKb7ZnY0otZnqDPRx0O4/0xLQ72tY9nw41/+HhTsKOqg==
   dependencies:
+    "@coinbase/cookie-manager" "^1.0.0"
+    react-intl "^6.5.1"
+    styled-components "^5.3.6"
+
+"@coinbase/cookie-banner@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@coinbase/cookie-banner/-/cookie-banner-1.0.3.tgz#a755e4ac9ffa0f3bfe22fc84ec4d88863ad82ad3"
+  integrity sha512-RMCyb42Ja4vxdZlN8tsFQaQgZUJwx7yvSFZeMnArQyHlKOjpzvJ+NCXY3G4aVYEGC0j86otsZ5Xe43F+qs2MYw==
+  dependencies:
+    "@coinbase/cookie-manager" "1.1.1"
+    react-intl "^6.5.1"
+    styled-components "^5.3.6"
+
+"@coinbase/cookie-manager@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@coinbase/cookie-manager/-/cookie-manager-1.1.0.tgz#3a47a89989953e0cb32b6b63445879252e42477b"
+  integrity sha512-r8UR7jSYxAPKIV7jSlqkmWfWi7kdcfMo7hJ0dV0FF2wMx1IIMU6V72BmuMpmn7Ov7HizAKtEcl/I/9fSWRVIQw==
+  dependencies:
+    "@coinbase/cookie-banner" "1.0.1"
+    "@coinbase/cookie-manager" "1.1.0"
+    js-cookie "^3.0.5"
+
+"@coinbase/cookie-manager@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@coinbase/cookie-manager/-/cookie-manager-1.1.1.tgz#f204ade281a2e2dccdf6e77baa7433cd054656a4"
+  integrity sha512-1fjLrWOyM2392eaDdgqIHlZHGuziRRzQZib3RuYSTdrX9z81muDc/oSvakb6VeDtfZkje0+3MHhnkSscaa5tUg==
+  dependencies:
+    "@coinbase/cookie-banner" "1.0.1"
+    "@coinbase/cookie-manager" "1.1.0"
     js-cookie "^3.0.5"
 
 "@cspotcode/source-map-support@^0.8.0":
