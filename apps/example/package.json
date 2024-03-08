@@ -11,7 +11,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@coinbase/cookie-banner": "1.0.3",
+    "@coinbase/cookie-banner": "1.0.4",
     "@coinbase/cookie-manager": "1.1.2",
     "next": "14.0.0",
     "react": "^18",
