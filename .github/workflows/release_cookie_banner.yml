@@ -16,11 +16,14 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Publish cookie-banner
-        working-directory: ./packages/cookie-banner
+      - name: Build cookie-banner
         run: |
           yarn install
           yarn build
+
+      - name: Publish cookie-banner
+        working-directory: ./packages/cookie-banner
+        run: |
           yarn publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
