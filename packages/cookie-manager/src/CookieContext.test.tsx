@@ -78,7 +78,7 @@ describe('CookieContext', () => {
     expect(onPreferenceChange).toHaveBeenCalledTimes(1);
   });
 
-  xit('does not remove cookies in shadow mode', async () => {
+  it('does not remove cookies in shadow mode', async () => {
     const remove = jest.fn();
     shadowMode = true;
     const mockGet = Cookies.get as jest.MockedFunction<typeof Cookies.get>;
