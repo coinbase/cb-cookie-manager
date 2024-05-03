@@ -215,13 +215,9 @@ const getAdTrackingPreference = (
 ): AdTrackingPreference => {
   const adTrackingPreference = cookieCache[ADVERTISING_SHARING_ALLOWED];
 
-  // TODO if we want to support GPC
-
-  // Currently this defaults to true for all regions... awaiting word from privacy / legal
-  // if we want to default to false for EU
   const adTrackingDefault = region === Region.EU ? { value: 'false' } : { value: 'true' };
 
-  // Example adPreference { value: 'false' }
+  // Example: adPreference { value: 'false' }
   const adPreference = adTrackingPreference || adTrackingDefault;
 
   return applyGpcToAdPref(region, adPreference);
