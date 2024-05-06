@@ -1,6 +1,17 @@
 import Cookies from 'js-cookie';
 
-export const deserializeCookies = (cookies: Record<string, string>) => {
+export { Region } from '../types';
+
+import {
+  ADVERTISING_SHARING_ALLOWED,
+  DEFAULT_CONSENT_PREFERENCES_COOKIE,
+  EU_CONSENT_PREFERENCES_COOKIE,
+} from '../constants';
+import { Region } from '../types';
+import { applyGpcToAdPref } from './applyGpcToAdPref';
+import { applyGpcToCookiePref } from './applyGpcToCookiePref';
+
+export const deserializeCookies = (region: Region, cookies: Record<string, string>) => {
   const parsedCookies: Record<string, any> = {};
 
   Object.keys(cookies).forEach((c) => {
@@ -9,15 +20,30 @@ export const deserializeCookies = (cookies: Record<string, string>) => {
     } catch (e) {
       parsedCookies[c] = cookies[c];
     }
+    parsedCookies[c] = filterCookieValue(region, c, parsedCookies[c]);
   });
   return parsedCookies;
 };
 
-export default function getAllCookies(initialCookies?: Record<string, string>) {
+export default function getAllCookies(region: Region, initialCookies?: Record<string, string>) {
   if (typeof window === 'undefined' && initialCookies) {
-    return deserializeCookies(initialCookies);
+    return deserializeCookies(region, initialCookies);
   }
-  return deserializeCookies(Cookies.get() || {});
+  return deserializeCookies(region, Cookies.get() || {});
+}
+
+// Apply in in memory filters to the cookie values.  Currently we are just apply
+// Global Privacy Control (GPC) logic to ensure we are honoring GPC
+function filterCookieValue(region: Region, cookieName: string, cookieValue: any) {
+  if (cookieName == ADVERTISING_SHARING_ALLOWED) {
+    cookieValue = applyGpcToAdPref(region, cookieValue);
+  } else if (
+    (region == Region.DEFAULT && cookieName == DEFAULT_CONSENT_PREFERENCES_COOKIE) ||
+    (region == Region.EU && cookieName == EU_CONSENT_PREFERENCES_COOKIE)
+  ) {
+    cookieValue = applyGpcToCookiePref(cookieValue);
+  }
+  return cookieValue;
 }
 
 export function areRecordsEqual(

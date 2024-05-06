@@ -21,4 +21,4 @@ const applyGpcToCookiePref = (preference: TrackingPreference): TrackingPreferenc
   return pref;
 };
 
-export default applyGpcToCookiePref;
+export { applyGpcToCookiePref };

@@ -1,5 +1,5 @@
 import { Region } from '../types';
-import applyGpcToAdPref from './applyGpcToAdPref';
+import { applyGpcToAdPref } from './applyGpcToAdPref';
 
 describe('applyGpcToAdPref', () => {
   it('removes targeting when GPC is ON in non-EU', () => {

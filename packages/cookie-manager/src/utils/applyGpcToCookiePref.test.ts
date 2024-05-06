@@ -1,5 +1,5 @@
 import { Region, TrackingCategory } from '../types';
-import applyGpcToCookiePref from './applyGpcToCookiePref';
+import { applyGpcToCookiePref } from './applyGpcToCookiePref';
 
 describe('applyGpcToCookiePref', () => {
   it('removes targeting when GPC is ON in non-EU', () => {

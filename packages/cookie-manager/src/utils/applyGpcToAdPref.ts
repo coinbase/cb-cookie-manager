@@ -28,4 +28,4 @@ const applyGpcToAdPref = (
   return pref;
 };
 
-export default applyGpcToAdPref;
+export { applyGpcToAdPref };

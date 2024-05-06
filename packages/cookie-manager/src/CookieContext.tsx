@@ -19,8 +19,8 @@ import {
   TrackerType,
   TrackingPreference,
 } from './types';
-import applyGpcToAdPref from './utils/applyGpcToAdPref';
-import applyGpcToCookiePref from './utils/applyGpcToCookiePref';
+import { applyGpcToAdPref } from './utils/applyGpcToAdPref';
+import { applyGpcToCookiePref } from './utils/applyGpcToCookiePref';
 import getAllCookies, { areRecordsEqual } from './utils/getAllCookies';
 import getDefaultTrackingPreference from './utils/getDefaultTrackingPreference';
 import { getDomainWithoutSubdomain, getHostname } from './utils/getDomain';
@@ -41,7 +41,7 @@ export const CookieProvider = ({ children }: Props) => {
   const { config, region, shadowMode, log, onPreferenceChange } = useTrackingManager();
 
   const POLL_INTERVAL = 500;
-  const [cookieValues, setCookieValues] = useState(() => getAllCookies());
+  const [cookieValues, setCookieValues] = useState(() => getAllCookies(region));
   let priorCookieValue: Record<string, any>;
   let trackingPreference: TrackingPreference;
   let adTrackingPreference: AdTrackingPreference;
@@ -64,13 +64,16 @@ export const CookieProvider = ({ children }: Props) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const checkCookies = () => {
-        const currentCookie = getAllCookies();
+        const currentCookie = getAllCookies(region);
 
         if (priorCookieValue == undefined || !areRecordsEqual(priorCookieValue, currentCookie)) {
           priorCookieValue = currentCookie;
           setCookieValues(currentCookie);
+
+          // Grab out prefences (they wil have GPC applied if present)
           trackingPreference = getTrackingPreference(currentCookie, region, config);
           adTrackingPreference = getAdTrackingPreference(currentCookie, region);
+
           setGTMVariables(trackingPreference, adTrackingPreference);
           const cookiesToRemove: Array<string> = [];
           Object.keys(currentCookie).forEach((c) => {
@@ -219,7 +222,6 @@ const getAdTrackingPreference = (
 
   // Example: adPreference { value: 'false' }
   const adPreference = adTrackingPreference || adTrackingDefault;
-
   return applyGpcToAdPref(region, adPreference);
 };
 
