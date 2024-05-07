@@ -27,3 +27,5 @@ jobs:
       - name: Lint Check
         # When fails, please run "yarn lint" to your code
         run: yarn lint
+      - name: Unit tests
+        run: yarn build && yarn test

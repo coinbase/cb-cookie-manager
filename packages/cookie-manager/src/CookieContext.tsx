@@ -19,6 +19,8 @@ import {
   TrackerType,
   TrackingPreference,
 } from './types';
+import { applyGpcToAdPref } from './utils/applyGpcToAdPref';
+import { applyGpcToCookiePref } from './utils/applyGpcToCookiePref';
 import getAllCookies, { areRecordsEqual } from './utils/getAllCookies';
 import getDefaultTrackingPreference from './utils/getDefaultTrackingPreference';
 import { getDomainWithoutSubdomain, getHostname } from './utils/getDomain';
@@ -39,7 +41,8 @@ export const CookieProvider = ({ children }: Props) => {
   const { config, region, shadowMode, log, onPreferenceChange } = useTrackingManager();
 
   const POLL_INTERVAL = 500;
-  const [cookieValues, setCookieValues] = useState(() => getAllCookies());
+  const [cookieValues, setCookieValues] = useState(() => getAllCookies(region));
+  let priorCookieValue: Record<string, any>;
   let trackingPreference: TrackingPreference;
   let adTrackingPreference: AdTrackingPreference;
 
@@ -61,11 +64,16 @@ export const CookieProvider = ({ children }: Props) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const checkCookies = () => {
-        const currentCookie = getAllCookies();
-        if (!areRecordsEqual(cookieValues, currentCookie)) {
+        const currentCookie = getAllCookies(region);
+
+        if (priorCookieValue == undefined || !areRecordsEqual(priorCookieValue, currentCookie)) {
+          priorCookieValue = currentCookie;
           setCookieValues(currentCookie);
+
+          // Grab out prefences (they wil have GPC applied if present)
           trackingPreference = getTrackingPreference(currentCookie, region, config);
-          adTrackingPreference = getAdTrackingPreference(currentCookie);
+          adTrackingPreference = getAdTrackingPreference(currentCookie, region);
+
           setGTMVariables(trackingPreference, adTrackingPreference);
           const cookiesToRemove: Array<string> = [];
           Object.keys(currentCookie).forEach((c) => {
@@ -195,14 +203,26 @@ const getTrackingPreference = (
     region === Region.EU
       ? cookieCache[EU_CONSENT_PREFERENCES_COOKIE]
       : cookieCache[DEFAULT_CONSENT_PREFERENCES_COOKIE];
-  return trackingPreference || getDefaultTrackingPreference(region, config);
+
+  // Example preference
+  // { region: Region.EU, consent: ['necessary'] }
+  const preference = trackingPreference || getDefaultTrackingPreference(region, config);
+  // Apply GPC when present
+  return applyGpcToCookiePref(preference);
 };
 
-const adTrackingDefault = { value: 'true' };
-
-const getAdTrackingPreference = (cookieCache: Record<string, any>): AdTrackingPreference => {
+// Do we want to change the ADVERTISING_SHARING_ALLOWED value to clear prior values?
+const getAdTrackingPreference = (
+  cookieCache: Record<string, any>,
+  region: Region
+): AdTrackingPreference => {
   const adTrackingPreference = cookieCache[ADVERTISING_SHARING_ALLOWED];
-  return adTrackingPreference || adTrackingDefault;
+
+  const adTrackingDefault = region === Region.EU ? { value: 'false' } : { value: 'true' };
+
+  // Example: adPreference { value: 'false' }
+  const adPreference = adTrackingPreference || adTrackingDefault;
+  return applyGpcToAdPref(region, adPreference);
 };
 
 export const useCookie = (cookieName: string): [any | undefined, SetCookieFunction] => {

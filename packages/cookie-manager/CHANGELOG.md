@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3 (05/03/2024)
+
+- Added logic to honor GCP in non-EU localities
+- Fixed failing spec
+
 ## 1.1.2 (02/26/2024)
 
 #### 🚀 Updates

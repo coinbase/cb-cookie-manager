@@ -21,6 +21,10 @@ jobs:
           yarn install
           yarn build
 
+      - name: Test cookie-manager
+        run: |
+          yarn test
+
       - name: Publish cookie-manager
         working-directory: ./packages/cookie-manager
         run: |
