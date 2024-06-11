@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.4 (06/11/2024)
+
+- Updated next version from 14.0.0 to 14.1.1
+- Updated braces from 3.0.2 to 3.0.3
+- Removed call to Buffer
+- Ensure navigator is defined before referencing
+
 ## 1.1.3 (05/03/2024)
 
 - Added logic to honor GCP in non-EU localities

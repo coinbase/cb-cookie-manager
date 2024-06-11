@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@coinbase/cookie-banner": "1.0.4",
-    "@coinbase/cookie-manager": "1.1.3",
+    "@coinbase/cookie-manager": "1.1.4",
     "next": "14.1.1",
     "react": "^18",
     "react-dom": "^18"
