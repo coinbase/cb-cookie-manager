@@ -8,6 +8,11 @@ const applyGpcToAdPref = (
   if (region == Region.EU) {
     return preference;
   }
+
+  if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
+    return preference;
+  }
+
   // If we lack GPC or it's set ot false we are done
   if (!(navigator as any).globalPrivacyControl) {
     return preference;
