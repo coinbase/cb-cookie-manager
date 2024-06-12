@@ -214,6 +214,10 @@ The provider must wrap the entire application and only be instantiated once. On 
 
 `log: (str: string, options?: Record<string, any>) => void`: Log function
 
+`initialCookieValues?:Record<string, string> `: Useful for server side rendering flows - setting of initial cookie values
+
+`initialGPCValue?:boolean`: Useful for server side rendering flows - honoring of Set-GPC header
+
 Example usage:
 
 ```typescript
