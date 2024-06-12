@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.5 (06/12/2024)
+
+- Added support for initialCookieValues, initialGPCValue
+
 ## 1.1.4 (06/11/2024)
 
 - Updated next version from 14.0.0 to 14.1.1
