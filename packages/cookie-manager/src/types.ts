@@ -66,6 +66,8 @@ export type TrackingManagerDependencies = {
   config: Config;
   shadowMode?: boolean;
   log: LogFunction;
+  initialCookieValues?: Record<string, string>;
+  initialGPCValue?: boolean;
 };
 
 export type AdTrackingPreference = {

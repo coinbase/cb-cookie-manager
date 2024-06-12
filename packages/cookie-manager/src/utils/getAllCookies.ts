@@ -25,6 +25,7 @@ export const deserializeCookies = (region: Region, cookies: Record<string, strin
   return parsedCookies;
 };
 
+// TODO clean up hydration
 export default function getAllCookies(region: Region, initialCookies?: Record<string, string>) {
   if (typeof window === 'undefined' && initialCookies) {
     return deserializeCookies(region, initialCookies);

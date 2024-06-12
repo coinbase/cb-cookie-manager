@@ -1,20 +1,19 @@
 import { AdTrackingPreference, Region } from '../types';
+import getGpc from './getGpc';
 
 const applyGpcToAdPref = (
   region: Region,
-  preference: AdTrackingPreference
+  preference: AdTrackingPreference,
+  gpcHeader?: boolean
 ): AdTrackingPreference => {
   // We are only applying GPC in non-EU countries at this point
   if (region == Region.EU) {
     return preference;
   }
-
-  if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
-    return preference;
-  }
-
-  // If we lack GPC or it's set ot false we are done
-  if (!(window.navigator as any).globalPrivacyControl) {
+  // If the browser is has global privacy control enabled
+  // we will honor it
+  const gpc = getGpc(gpcHeader);
+  if (!gpc) {
     return preference;
   }
 

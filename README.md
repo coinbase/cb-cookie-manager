@@ -37,6 +37,10 @@ cd /path/to/coinbase/cb-cookie-manager/example/app
 yarn dev
 ```
 
+## Testing
+
+yarn test
+
 ## Packages
 
 - `@coinbase/cookie-manager`: Package that helps with managing first party client side cookies to adhere to CCPA and GDPR Cookie regulations. More information [here](./packages/cookie-manager/README.md)
