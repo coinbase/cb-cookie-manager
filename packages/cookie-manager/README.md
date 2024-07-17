@@ -526,7 +526,7 @@ const SomeComponent = () => {
 ```
 
 
-### trackingMatches
+### trackerMatches
 
 Used for determining if the passed value matches the tracker criteria.
 
