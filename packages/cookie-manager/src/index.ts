@@ -19,3 +19,4 @@ export {
   getAppTrackingTransparencyFromQueryParams,
   persistMobileAppPreferences,
 } from './utils/persistMobileAppPreferences';
+export { default as trackerMatches } from './utils/trackerMatches';

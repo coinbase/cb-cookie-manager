@@ -525,6 +525,28 @@ const SomeComponent = () => {
 }
 ```
 
+
+### trackerMatches
+
+Used for determining if the passed value matches the tracker criteria.
+
+This will match the if the value or regex produces a match on the passed value
+
+
+Example usage:
+
+```typescript
+import { trackerMatches } from '@coinbase/cookie-manager';
+
+const tracker: Tracker = {
+    id: 'id-regex',
+    type: TrackerType.COOKIE,
+    regex: 'id(?:_[a-f0-9]{32}|undefined)(?:.*)',
+};
+
+trackerMatches(tracker, 'id_ac7a5c3da45e3612b44543a702e42b01')
+```
+
 ## License
 
 Licensed under the Apache License. See [LICENSE](./LICENSE.md) for more information.
