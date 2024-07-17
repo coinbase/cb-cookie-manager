@@ -26,7 +26,7 @@
     "react-dom": "^18.1.0"
   },
   "dependencies": {
-    "@coinbase/cookie-manager": "^1.1.5",
+    "@coinbase/cookie-manager": "^1.1.6",
     "react-intl": "^6.5.1",
     "styled-components": "^5.3.6"
   }

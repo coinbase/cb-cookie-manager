@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.6 (07/17/2024)
+
+- Include trackerMatches in the list of exported methods
+
 ## 1.1.5 (06/12/2024)
 
 - Added support for initialCookieValues, initialGPCValue

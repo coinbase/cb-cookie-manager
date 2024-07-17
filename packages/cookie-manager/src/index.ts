@@ -10,6 +10,7 @@ export { default as useSetTrackingPreference } from './hooks/useSetTrackingPrefe
 export { default as useTrackingPreference } from './hooks/useTrackingPreference';
 export { Provider } from './TrackingManagerContext';
 export { useTrackingManager } from './TrackingManagerContext';
+export { trackerMatches } from './utils/trackerMatches';
 export { Framework, Region, TrackerType, TrackingCategory, TrackingPreference } from './types';
 export { default as areCookiesEnabled } from './utils/areCookiesEnabled';
 export { default as getDefaultTrackingPreference } from './utils/getDefaultTrackingPreference';
