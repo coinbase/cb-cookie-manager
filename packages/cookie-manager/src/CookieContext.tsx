@@ -46,6 +46,7 @@ export const CookieProvider = ({ children }: Props) => {
     onPreferenceChange,
     initialCookieValues,
     initialGPCValue,
+    disableTimer,
   } = useTrackingManager();
 
   const POLL_INTERVAL = 500;
@@ -109,6 +110,12 @@ export const CookieProvider = ({ children }: Props) => {
         }
       };
 
+      // We provide a disableTimer option to avoid setting the interval and potentially introducing issues in timer related tests.
+      // This is meant to be used in testing only!
+      if (disableTimer == true) {
+        return () => {};
+      }
+
       checkCookies();
       // Call the function once before setting the interval
       const intervalId = setInterval(checkCookies, POLL_INTERVAL);
@@ -118,6 +125,7 @@ export const CookieProvider = ({ children }: Props) => {
       };
     }
   }, []);
+
   useEffect(() => {
     if (onPreferenceChange) {
       onPreferenceChange(trackingPreference);

@@ -68,6 +68,10 @@ export type TrackingManagerDependencies = {
   log: LogFunction;
   initialCookieValues?: Record<string, string>;
   initialGPCValue?: boolean;
+  // We provide a disableTimer option to avoid setting an interval for
+  // periodically checking cookies. This is meant to be used in testing only to
+  // avoid issues with timer related tests.
+  disableTimer?: boolean;
 };
 
 export type AdTrackingPreference = {
