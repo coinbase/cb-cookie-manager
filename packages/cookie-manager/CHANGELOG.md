@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.8 (09/18/2024)
+
+- Introduce an optional `disableTimer` prop in `CookieProvider` to enhance testing flexibility and prevent conflicts with frequently used functions such as `runAllTimers` and `advanceTimersByTime`.
+
 ## 1.1.7 (07/17/2024)
 
 - Include Tracker in the list of exported types
