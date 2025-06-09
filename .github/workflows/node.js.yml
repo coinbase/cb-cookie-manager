@@ -8,6 +8,9 @@ on:
     branches: ['main']
   pull_request:
     branches: ['main']
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +19,11 @@ jobs:
         node-version: [18.x, 20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e
