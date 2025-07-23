@@ -2,6 +2,11 @@ import { defineMessages } from 'react-intl';
 const i18nKey = 'CookieManager';
 
 const messages = defineMessages({
+  defaultBannerTitle: {
+    id: `${i18nKey}.defaultBannerTitle`,
+    defaultMessage: 'Manage consent',
+    description: 'Title for the cookie banner that manages cookie consent preferences',
+  },
   defaultBannerDescription: {
     id: `${i18nKey}.defaultBannerDescription`,
     defaultMessage:
@@ -117,6 +122,7 @@ const categoryMessages = {
 };
 
 const defaultMessages = {
+  defaultBannerTitle: messages.defaultBannerTitle,
   defaultBannerDescription: messages.defaultBannerDescription,
   bannerSettingsCTA: messages.bannerSettingsCTA,
   bannerMainCTA: messages.bannerAcceptCTA,
@@ -130,6 +136,7 @@ const defaultMessages = {
 };
 
 const euMessages = {
+  defaultBannerTitle: messages.defaultBannerTitle,
   defaultBannerDescription: messages.euBannerDescription,
   bannerSettingsCTA: messages.bannerSettingsCTA,
   bannerMainCTA: messages.bannerAcceptCTA,

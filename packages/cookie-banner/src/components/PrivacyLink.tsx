@@ -7,11 +7,12 @@ type Props = {
   children: React.ReactNode;
   color?: 'primary' | 'light' | 'foregroundMuted';
   link?: string;
+  className?: string;
 };
 
-function PrivacyLink({ children, color = 'light', link }: Props) {
+function PrivacyLink({ children, color = 'light', link, className }: Props) {
   return (
-    <Link color={color} href={link} target="_blank" rel="noopener">
+    <Link color={color} href={link} target="_blank" rel="noopener" className={className}>
       {children}
     </Link>
   );
