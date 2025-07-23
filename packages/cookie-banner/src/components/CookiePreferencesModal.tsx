@@ -48,6 +48,11 @@ type Props = {
   useTranslations?:
     | ((() => [boolean, Record<string, string>]) & (() => [boolean, Record<string, string>]))
     | undefined;
+  classNames?: {
+    container?: string;
+    primaryCta?: string;
+    title?: string;
+  };
 };
 
 const CookieLink = (str: React.ReactNode, link?: string) => [
@@ -56,7 +61,7 @@ const CookieLink = (str: React.ReactNode, link?: string) => [
   </PrivacyLink>,
 ];
 
-function CookiePreferencesModal({ onClose, isOpen, link }: Props) {
+function CookiePreferencesModal({ onClose, isOpen, link, classNames }: Props) {
   const { region, log } = useTrackingManager();
 
   useEffect(() => {
@@ -96,8 +101,13 @@ function CookiePreferencesModal({ onClose, isOpen, link }: Props) {
   }, [setTrackingPreference, initialTrackingPreference, log, onClose, getLogState]);
 
   return (
-    <Modal close={handleClose} isOpen={isOpen} title={formatMessage(messages.modalTitle)}>
-      <Container>
+    <Modal
+      close={handleClose}
+      isOpen={isOpen}
+      title={formatMessage(messages.modalTitle)}
+      classNames={classNames}
+    >
+      <Container className={classNames?.container}>
         <Text>
           {formatMessage(messages.modalDescription, {
             link: (node: React.ReactNode) => CookieLink(node, link),
@@ -119,7 +129,7 @@ function CookiePreferencesModal({ onClose, isOpen, link }: Props) {
         </CategoryContainer>
         <Spacer size="lg" />
         <ButtonContainer>
-          <Button onClick={handleSave} large>
+          <Button onClick={handleSave} large className={classNames?.primaryCta}>
             {formatMessage(messages.saveCTA)}
           </Button>
         </ButtonContainer>

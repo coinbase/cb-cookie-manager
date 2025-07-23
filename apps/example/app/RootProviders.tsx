@@ -1,13 +1,10 @@
 'use client';
-import '@/styles/globals.css';
-
 import { Provider, Region, TrackingCategory, TrackingPreference } from '@coinbase/cookie-manager';
-import type { AppProps } from 'next/app';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { cookieManagerConfig } from '../utils/cookieManagerConfig';
+import { cookieManagerConfig } from '@/utils/cookieManagerConfig';
 
-export default function App({ Component, pageProps }: AppProps) {
+export const RootProviders = ({ children }: { children: React.ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
   const trackingPreference = useRef<TrackingPreference | undefined>();
 
@@ -52,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
       log={console.log}
       onPreferenceChange={setTrackingPreference}
     >
-      <Component {...pageProps} />
+      {children}
     </Provider>
   );
-}
+};

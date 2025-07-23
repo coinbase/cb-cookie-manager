@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5 (23/07/2025)
+
+- Updating theming options and adding support for classnames for more flexibility in styling. Updated overall style slightly to include a header for mobile
+
 ## 1.0.4 (03/07/2024)
 
 #### Bug

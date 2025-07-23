@@ -26,6 +26,19 @@ type Props = {
     | ((() => [boolean, Record<string, string>]) & (() => [boolean, Record<string, string>]))
     | undefined;
   companyName: string;
+  classNames?: {
+    banner?: {
+      container?: string;
+      primaryCta?: string;
+      secondaryCta?: string;
+      cookieLink?: string;
+    };
+    modal?: {
+      title?: string;
+      container?: string;
+      primaryCta?: string;
+    };
+  };
 };
 
 const cookieOptions = {
@@ -101,13 +114,22 @@ export const useBanner = () => {
   };
 };
 
-function Banner({ theme, link, useTranslations, companyName }: Props) {
+function Banner({ theme, link, useTranslations, companyName, classNames }: Props) {
   const { hasDismissed, handleBannerDismiss, handleAcceptAll, closeModal, openModal, isModalOpen } =
     useBanner();
 
   return (
     <UIProviders theme={theme || defaultTheme} useTranslations={useTranslations}>
-      <CookiePreferencesModal onClose={closeModal} isOpen={isModalOpen} link={link} />
+      <CookiePreferencesModal
+        onClose={closeModal}
+        isOpen={isModalOpen}
+        link={link}
+        classNames={{
+          container: classNames?.modal?.container,
+          primaryCta: classNames?.modal?.primaryCta,
+          title: classNames?.modal?.title,
+        }}
+      />
       <BannerContent
         onDismiss={handleBannerDismiss}
         onAccept={handleAcceptAll}
@@ -115,6 +137,12 @@ function Banner({ theme, link, useTranslations, companyName }: Props) {
         hasDismissed={hasDismissed}
         link={link}
         companyName={companyName}
+        classNames={{
+          container: classNames?.banner?.container,
+          primaryCta: classNames?.banner?.primaryCta,
+          secondaryCta: classNames?.banner?.secondaryCta,
+          cookieLink: classNames?.banner?.cookieLink,
+        }}
       />
     </UIProviders>
   );

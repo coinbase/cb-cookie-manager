@@ -12,10 +12,13 @@ type Props = {
   close: () => void;
   title?: ReactNode;
   isOpen: boolean;
+  classNames?: {
+    title?: string;
+  };
 };
 
 function Modal(props: Props) {
-  const { children, close, title, isOpen } = props;
+  const { children, close, title, isOpen, classNames } = props;
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -50,7 +53,7 @@ function Modal(props: Props) {
   return ReactDOM.createPortal(
     <Overlay onClick={handleOverlayClick} visible={isVisible}>
       <ModalContainer ref={modalRef}>
-        <ModalHeader close={handleClose} title={title} />
+        <ModalHeader close={handleClose} title={title} classNames={classNames} />
         <ModalBody>{children}</ModalBody>
       </ModalContainer>
     </Overlay>,
@@ -77,12 +80,19 @@ const Overlay = styled.div<{ visible: boolean }>`
 type ModalHeaderProps = {
   title?: string | React.ReactNode;
   close?: () => void;
+  classNames?: {
+    title?: string;
+  };
 };
 
-export function ModalHeader({ title, close }: ModalHeaderProps) {
+export function ModalHeader({ title, close, classNames }: ModalHeaderProps) {
   return (
     <Header>
-      {title && <Title data-synthetic-id="modal_cookies">{title}</Title>}
+      {title && (
+        <Title data-synthetic-id="modal_cookies" className={classNames?.title}>
+          {title}
+        </Title>
+      )}
 
       {close && <CloseIcon onClick={close} />}
     </Header>

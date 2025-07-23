@@ -11,8 +11,8 @@ import CloseIcon from './CloseIcon';
 import PrivacyLink from './PrivacyLink';
 import Spacer from './Spacer';
 
-const CookieLink = (str: React.ReactNode, link?: string): React.ReactNode[] => [
-  <PrivacyLink key="CookieLink" link={link}>
+const CookieLink = (str: React.ReactNode, link?: string, className?: string): React.ReactNode[] => [
+  <PrivacyLink key="CookieLink" link={link} className={className}>
     {str}
   </PrivacyLink>,
 ];
@@ -24,6 +24,12 @@ type Props = {
   hasDismissed: boolean;
   link?: string;
   companyName: string;
+  classNames?: {
+    container?: string;
+    primaryCta?: string;
+    secondaryCta?: string;
+    cookieLink?: string;
+  };
 };
 
 function BannerContent({
@@ -33,6 +39,7 @@ function BannerContent({
   hasDismissed,
   link,
   companyName,
+  classNames,
 }: Props) {
   const { log } = useTrackingManager();
 
@@ -59,16 +66,19 @@ function BannerContent({
     return null;
   }
   return (
-    <Container visible={isVisible}>
-      <MobileDismissButton
-        onClick={handleDismiss}
-        aria-label={formatMessage(messages.bannerDismissCTA)}
-      >
-        <CloseIcon inverted size="10" />
-      </MobileDismissButton>
+    <Container visible={isVisible} className={classNames?.container}>
+      <MobileHeader>
+        <div>{formatMessage(messages.defaultBannerTitle)}</div>
+        <MobileDismissButton
+          onClick={handleDismiss}
+          aria-label={formatMessage(messages.bannerDismissCTA)}
+        >
+          <CloseIcon inverted size="10" />
+        </MobileDismissButton>
+      </MobileHeader>
       <DescriptionText>
         {formatMessage(messages.defaultBannerDescription, {
-          link: (node: React.ReactNode) => CookieLink(node, link),
+          link: (node: React.ReactNode) => CookieLink(node, link, classNames?.cookieLink),
           span: () => <span key="span">{companyName}</span>,
           button: (node: React.ReactNode) => [
             <ManageSettingsButton
@@ -82,11 +92,13 @@ function BannerContent({
         })}
       </DescriptionText>
       <CTA>
-        <SettingsCTA onClick={showPreferencesModal}>
+        <SettingsCTA onClick={showPreferencesModal} className={classNames?.secondaryCta}>
           {formatMessage(messages.bannerSettingsCTA)}
         </SettingsCTA>
         <Spacer size="md" vertical />
-        <Button onClick={handleClick}>{formatMessage(messages.bannerMainCTA)}</Button>
+        <MainCtaButton onClick={handleClick} className={classNames?.primaryCta}>
+          {formatMessage(messages.bannerMainCTA)}
+        </MainCtaButton>
       </CTA>
       <DesktopDismissButton
         onClick={handleDismiss}
@@ -99,12 +111,30 @@ function BannerContent({
 }
 export default memo(BannerContent);
 
+const MobileHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: ${({ theme }) => theme.colors.onBackground};
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    display: none;
+  }
+`;
+
+const MainCtaButton = styled(Button)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 100%;
+  }
+`;
+
 const DismissButton = styled.button`
   background-color: ${({ theme }) => theme.colors.onBackgroundMuted};
   border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -120,7 +150,6 @@ const MobileDismissButton = styled(DismissButton)`
     @media (max-width: ${theme.breakpoints.tablet}px) {
       display: flex;
       align-self: flex-end;
-      margin: ${theme.size.xs} 0;
     }
   `}
 `;
@@ -139,6 +168,7 @@ const CTA = styled.div`
     margin-right: ${theme.size.lg};
     @media (max-width: ${theme.breakpoints.tablet}px) {
       margin-right: 0;
+      width: 100%;
     }
   `}
 `;
@@ -150,18 +180,22 @@ const SettingsCTA = styled.button`
   border: none;
   white-space: nowrap;
   cursor: pointer;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 100%;
+  }
 `;
 
 const DescriptionText = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.fontSize.sm};
-    line-height: 23px;
+    line-height: ${theme.lineHeight?.sm || '23px'};
     margin-right: ${theme.size.lg};
 
     @media (max-width: ${theme.breakpoints.tablet}px) {
       width: auto;
       margin-right: 0;
-      margin-bottom: ${theme.size.md};
+      margin-bottom: ${theme.gutters?.vertical?.md || theme.size.md};
     }
   `}
 `;
@@ -177,13 +211,17 @@ const Container = styled.div<{ visible: boolean }>`
     background-color: ${theme.colors.backgroundMuted};
     z-index: ${theme.zIndex.overlay};
     color: ${theme.colors.onBackgroundMuted};
-    padding: ${`${theme.size.md} 60px`};
+    padding: ${`${theme.gutters?.vertical?.md || theme.size.md} ${
+      theme.gutters?.horizontal?.md || '60px'
+    }`};
     justify-content: space-between;
     ${visible ? 'bottom: 0' : 'bottom: -140px'};
     transition: bottom ${TRANSITION_TIME_MS}ms;
     @media (max-width: ${theme.breakpoints.tablet}px) {
       flex-direction: column;
-      padding: ${`0 ${theme.size.md} ${theme.size.md}`};
+      padding: ${`${theme.gutters?.vertical?.sm || theme.size.md} ${
+        theme.gutters?.horizontal?.sm || theme.size.md
+      }`};
       ${visible ? 'bottom: 0' : 'bottom: -200px'};
     }
   `}

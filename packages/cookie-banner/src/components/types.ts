@@ -18,6 +18,20 @@ export type Theme = {
     sm: string;
     md: string;
   };
+  lineHeight?: {
+    sm?: string;
+    md?: string;
+  };
+  gutters?: {
+    horizontal?: {
+      sm?: string;
+      md?: string;
+    };
+    vertical?: {
+      sm?: string;
+      md?: string;
+    };
+  };
   size: {
     xs: string;
     sm: string;
